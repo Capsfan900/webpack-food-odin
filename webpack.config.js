@@ -24,9 +24,13 @@ module.exports = {
     output:{
         path: path.resolve(__dirname,"dist"),
         filename:'bundle.js',
+        clean: true, 
     },
-    //this plugin auto injects js in html
-    plugins:[new HtmlWebpackPlugin()],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html', // Specify your HTML template path
+        }),
+    ],
     mode: "development"
 
 }

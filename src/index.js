@@ -1,18 +1,37 @@
-
-import {homeScriptAlert } from './home'
-import {contactScriptAlert} from './contact'
-import {menuScriptAlert} from './menu'
+import './style.css'
+import { renderHomePage } from './home'
+import { renderContact } from './contact'
+import { renderMenu } from './menu'
 
 
 //event listeners for functions that create each page
-homeScriptAlert();
-contactScriptAlert();
-menuScriptAlert();
+const menu = document.querySelector("#btn1");
+const home = document.querySelector('#btn2');
+const contact = document.querySelector('#btn3');
+
+contact.addEventListener("click",function(){
+     home.disabled = false;
+     renderContact();
+});
+
+home.addEventListener("click",function(){
+     renderHomePage();
+});
+
+
+menu.addEventListener("click",function(){  
+    home.disabled = false;
+    renderMenu();
+});
 
 
 
 
 
 //other UI handler functions
+
+
+
+
 
 //make it fancy
