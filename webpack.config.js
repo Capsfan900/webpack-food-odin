@@ -4,34 +4,35 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: "./src/index.js",
     module: {
-        //handling file types
         rules: [
-        {
-            test: /\.svg$/,
-            use:'svg-inline-loader'
-        },
-        {
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"],
-        },
-        {
-            test: /\.(js)/,
-            use:"babel-loader",
-        }
+            {
+                test: /\.svg$/,
+                use: 'svg-inline-loader'
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.(js)$/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env"]
+                    }
+                }
+            }
         ]
-    }, 
-    //creating output file
-    output:{
-        path: path.resolve(__dirname,"dist"),
-        filename:'bundle.js',
-        clean: true, 
+    },
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: 'bundle.js',
+        clean: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html', // Specify your HTML template path
+            template: './src/index.html',
         }),
     ],
     mode: "development"
-
-}
-
+};
